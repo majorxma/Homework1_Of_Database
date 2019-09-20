@@ -1,0 +1,520 @@
+<!DOCTYPE html>
+<html lang = "en">
+
+<head>
+<meta charset="utf-8">
+<title>api-codesearcher_pra1</title>
+<style>
+    body{
+        margin: 0;
+        padding: 0;
+        /*background-color: #FFF2E2;*/
+        background-color: #ebe4d7;
+        width:100%;
+        height:100%;
+    }
+
+    input {
+        height:30px;
+         width:400px;
+         background: none;
+         font-size: 20px;
+         outline: none;
+         border-style: none;
+     }
+
+    #app {
+        position: relative;
+        height: 100%;
+        width:90%;
+        left: 5%;
+        top:40px;
+    }
+
+    #centershow{
+        border:3px, red, solid;
+    }
+
+    #page2 {
+        position: absolute;
+        top:80px;
+        left: 5%;
+        background-color: white;
+        border-radius: 20px;
+        width:90%;
+    }
+
+    .space {
+        position:absolute;
+        height: 30px;
+    }
+
+    textarea {
+        position: relative;
+        overflow: hidden;
+        margin:5px;
+        padding: 5px;
+        border:0px;
+        text-align: left;
+        color :black;
+        font-size:15px;
+        left:5%;
+        width:80%;
+        background-color:white;
+        border-left: 1px black solid;
+    }
+    .textarea1{
+        position: relative;
+        overflow: hidden;
+        margin:5px;
+        padding: 5px;
+        border:0px;
+        text-align: left;
+        color :black;
+        font-size:15px;
+        left:5%;
+        width:80%;
+        background-color:white;
+        border-left: 1px black solid;
+    }
+
+    #inputsentence{
+        position:relative;
+        margin: 5px;
+        padding: 5px;
+        border:0px;
+        text-align: center;
+        width:80%;
+        left:5%;
+    }
+
+    textarea:focus{outline: none;}
+
+    .searcher1 {
+        background: #FFF2E2;
+        top:100px;
+        border-radius: 15px;
+        margin: auto;
+        width: 530px;
+        height: 37px;
+        border:solid 1px;
+    }
+
+    .searcher2 {
+        position: relative;
+        top:350px;
+        background: #FFF2E2;
+        border-radius: 15px;
+        margin: auto;
+        width: 530px;
+        height: 37px;
+        border:solid 1px;
+    }
+
+     .searcher
+     {
+         top:400px;
+        border-radius: 10px;
+         margin: auto;
+        width: 45%;
+        height: 35px;
+        border:solid 1px;
+     }
+
+     .innerexplain{
+         color:white;
+     }
+
+    .login-button{
+        float:right;
+        width: 120px;
+	    height: 37px;
+	    border-width: 0px; 
+	    border-radius: 15px; 
+	    background: #1E90FF; 
+	    cursor: pointer; 
+	    outline: none; 
+	    font-family: Microsoft YaHei; 
+	    color: white; 
+	    font-size: 17px;
+    }
+
+
+    .login-button:hover {
+        background: #5599FF;
+    }
+
+    #mainshow{
+        border: 2px solid #d8d8d8;
+        width: 80%;
+        left:10%;
+        border-radius: 15px;
+        position: relative;
+        margin: 30px;
+        padding: 0px;
+    }
+
+    .show2{
+        height: 40px;
+        border-bottom:2px #d8d8d8 solid;
+        background-color: #f7f7f7;
+        -moz-border-radius: 15px;
+        -webkit-border-radius: 15px;
+    }
+
+    .show3{
+        position: relative;
+        left:20px;
+        top:15%;
+        font-size: 130%;
+        float: left;
+    }
+
+    .method1{
+        position:relative;
+        left:39px;
+        top:15%;
+        font-size: 130%;
+	display: inline-block;
+    }
+
+    .method_dist{
+	float: right;
+	text-align: right;
+        position:relative;
+        top:15%;
+        font-size: 130%;
+	display: inline-block;
+    }
+
+    .show4{
+        position: relative;
+        width:100%;
+        left: 0;
+        padding: 0px;
+        margin: 20px;
+    }
+
+    .show41{
+        position: relative;
+        width:100%;
+        left: 0;
+        padding: 0px;
+        margin: 20px;
+    }
+
+
+    .show5 {
+        position: relative;
+        width:60px;
+        float: left;
+        top:45px;
+        text-align: center;
+    }
+    
+    .show5border{
+        position: relative;
+        width:60px;
+        height: 120px;
+        float: left;
+        left: 15px;
+    }
+
+    .show9 {
+        position: relative;
+        width:60px;
+        float: right;
+        top:25px;
+        text-align: center;
+    }
+    
+    .show9border{
+        position: relative;
+        width:60px;
+        height: 100px;
+        float: left;
+        left: 15px;
+    }
+
+    .show0 {
+        position: relative;
+        width:60px;
+        float: right;
+        top:8px;
+        text-align: center;
+    }
+    
+    .show0border{
+        position: relative;
+        width:0px;
+        height: 50px;
+        float: left;
+        left: 15px;
+    }
+
+    .show6 {
+        position: relative;
+        height: 20px;
+        top:25%;
+        left:40%;
+    }
+
+    .show7{  
+        position: relative;
+        top:20%;
+        height: 40px;
+        border-radius: 5px;
+        border: 1px black solid;
+    }
+.imgs{
+    position: relative;
+    top:200px;
+}
+
+</style>
+<script src="https://cdn.staticfile.org/vue/2.2.2/vue.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/vue-resource@1.5.1"></script>
+<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+</head>
+<link href="https://cdn.jsdelivr.net/npm/animate.css@3.5.1" rel="stylesheet" type="text/css">
+<body>
+
+<div id="app" >
+    <div v-if = "willshow">
+            <transition
+            name="custom-classes-transition"
+            enter-active-class="animated bounceInLeft"
+            leave-active-class="animated bounceOutRight">
+            <div>
+                    <center>
+                            <img src="images/apicodesearcher.png" class = "imgs"/>
+                    </center>
+                    <div class = "searcher2">
+                        <input left = "0" id = "iput" v-model = "message" type="border-radius:10px;" placeholder="please input your search" @keyup.enter="willshow = !willshow, counter = !counter">
+                        <button class="login-button" v-on:click="willshow = !willshow, counter = !counter">SEARCH</button>
+                    </div>
+                    <div class = "searcher2">
+                            <input left = "0" id = "iput" v-model = "message" type="border-radius:10px;" placeholder="code" @keyup.enter="willshow = !willshow, counter = !counter">
+                            <button class="login-button" v-on:click="willshow = !willshow, counter = !counter, message = 'code'">code</button>
+                        </div>
+            </div>
+          </transition>
+    </div>
+        
+    <div v-else>
+        
+            <center>
+                    <div class = "searcher1" v-if = "!ok">
+                        <input left = "0" id = "iput" v-model = "message" type="border-radius:10px;" placeholder="please input your search" @keyup.enter="counter = !counter">
+                        <button class="login-button" v-on:click="counter = !counter">SEARCH</button>
+                    </div>
+                </center>
+                <div id = "page2" v-if = "!ok">
+                        <template v-for = "(item,index) in items">
+                            <div id = mainshow>
+                                    <div class = show2>
+                                        <a class = show3 :href="item.url">Example{{index + 1}}</a>
+                            <div class = method1>method:   {{item.method}}</div>
+                            <div class = method_dist>	dist: {{item.dist}} </div>
+                                        </div>
+                                            <div class = show4>
+                                                <div class = show5border> <div class = show5>code</div></div>
+                                                <textarea class = "T" cols="20" rows="5">{{item.code}}</textarea>
+                                            </div>
+                                        <div class = show4>
+                                                <div class = show9border> <div class = show9>apis</div></div>
+                                                <textarea class = "textarea1" class = "T" cols="20" rows="3">{{item.apis}}</textarea>
+                                        </div>
+                                        <div class = show41>
+                                                <div class = show0border> <div class = show0>sentence</div></div>
+                                                <textarea class = "textarea1"  cols="20" rows="1">{{item.sentence}}</textarea>
+                                        </div>
+                            </div>
+                        </template>
+                </div>
+
+    </div>
+
+</div>
+
+<script>
+new Vue({
+    el:'#app',
+    data: {
+        willshow:true,
+        message:'', 
+        ok: false,
+        counter: true,
+        items:[
+            {
+                code:"\n\nYour result of code will be showed there\n\n",
+                apis:"\nYour result of apis will be showed there\n",
+                method:"",
+                sentence:"Your result of sentence will be showed there"
+            },
+            {
+                code:"\n\nYour result of code will be showed there\n\n",
+                apis:"\nYour result of apis will be showed there\n",
+                method:"",
+                sentence:"Your result of sentence will be showed there"
+             },
+            {
+                code:"\n\nYour result of code will be showed there\n\n",
+                apis:"\nYour result of apis will be showed there\n",
+                method:"",
+                sentence:"Your result of sentence will be showed there"
+                },
+            {
+                code:"\n\nYour result of code will be showed there\n\n",
+                apis:"\nYour result of apis will be showed there\n",
+                method:"",
+                sentence:"Your result of sentence will be showed there"},
+            {
+                code:"\n\nYour result of code will be showed there\n\n",
+                apis:"\nYour result of apis will be showed there\n",
+                method:"",
+                sentence:"Your result of sentence will be showed there"
+                }
+        ]
+    },
+    /*method:{
+        greet: function() {
+            this.willshow = !this.willshow;
+            this.counter = !this.counter;
+        }
+    },*/
+    watch: {
+          counter:function (val) {
+            this.ok = false;
+		console.log("ttttttttttttttt");
+		axios.get('http://holer.org:65263/sss', {
+			params: {
+				a: this.message
+			}
+		}).then(function (response) {
+console.log(this.ok);
+			console.log(this.items);
+			console.log("WWWWWWWWWWWWWWWWWWWWW");
+			console.log("Ans: ",  response.data);
+			//console.log(response);
+			this.items = response.data;
+	       		//ans_tmp = response.data;
+			console.log(this.items);
+			console.log("end");
+		}.bind(this))
+		.catch(function (error) {
+			console.log("EEEEEEEEEEEEEEEEEEEEEEEEEEEEEE");
+			console.log(error);
+		});
+
+		this.ok = false;
+          },
+          back:function(val) {
+                this.ok = false;
+          }
+      },
+
+});
+
+var autoTextarea = function (elem, extra, maxHeight) {
+        //判断elem是否为数组
+        if(elem.length > 0){
+            for(var i = 0; i < elem.length; i++ ){
+               e(elem[i]);
+            }
+        }
+        else{
+            e(elem);
+        }
+ 
+        function e(elem){
+        extra = extra || 0;
+        var isFirefox = !!document.getBoxObjectFor || 'mozInnerScreenX' in window,
+        isOpera = !!window.opera && !!window.opera.toString().indexOf('Opera'),
+                addEvent = function (type, callback) {
+                        elem.addEventListener ?
+                                elem.addEventListener(type, callback, false) :
+                                elem.attachEvent('on' + type, callback);
+                },
+                getStyle = elem.currentStyle ? function (name) {
+                        var val = elem.currentStyle[name];
+ 
+                        if (name === 'height' && val.search(/px/i) !== 1) {
+                                var rect = elem.getBoundingClientRect();
+                                return rect.bottom - rect.top -
+                                        parseFloat(getStyle('paddingTop')) -
+                                        parseFloat(getStyle('paddingBottom')) + 'px';        
+                        };
+ 
+                        return val;
+                } : function (name) {
+                                return getComputedStyle(elem, null)[name];
+                },
+                minHeight = parseFloat(getStyle('height'));
+ 
+        elem.style.resize = 'none';
+ 
+        var change = function () {
+                var scrollTop, height,
+                        padding = 0,
+                        style = elem.style;
+ 
+                if (elem._length === elem.value.length) return;
+                elem._length = elem.value.length;
+ 
+                if (!isFirefox && !isOpera) {
+                        padding = parseInt(getStyle('paddingTop')) + parseInt(getStyle('paddingBottom'));
+                };
+                scrollTop = document.body.scrollTop || document.documentElement.scrollTop;
+ 
+                elem.style.height = minHeight + 'px';
+                if (elem.scrollHeight > minHeight) {
+                        if (maxHeight && elem.scrollHeight > maxHeight) {
+                                height = maxHeight - padding;
+                                style.overflowY = 'auto';
+                        } else {
+                                height = elem.scrollHeight - padding;
+                                style.overflowY = 'hidden';
+                        };
+                        style.height = height + extra + 'px';
+                        scrollTop += parseInt(style.height) - elem.currHeight;
+                        document.body.scrollTop = scrollTop;
+                        document.documentElement.scrollTop = scrollTop;
+                        elem.currHeight = parseInt(style.height);
+                };
+        };
+ 
+        addEvent('propertychange', change);
+        addEvent('input', change);
+        addEvent('focus', change);
+        change();
+        }
+};
+
+autoTextarea(document.getElementsByClassName("T"));
+
+//根据DOM元素的id构造出一个编辑器
+var editor = CodeMirror.fromTextArea(document.getElementsByClassName("code"), {
+        mode: "text/groovy",    //实现groovy代码高亮
+        mode: "text/x-java", //实现Java代码高亮
+        lineNumbers: true,	//显示行号
+        theme: "dracula",	//设置主题
+        lineWrapping: true,	//代码折叠
+        foldGutter: true,
+        gutters: ["CodeMirror-linenumbers", "CodeMirror-foldgutter"],
+        matchBrackets: true,	//括号匹配
+        //readOnly: true,        //只读
+    });
+    editor.setSize('800px', '950px');     //设置代码框的长宽
+
+    editor.setValue("");    //先代码框的值清空
+    editor.setValue(obj.scriptCode);    //给代码框赋值
+
+    // editor.setOption("readOnly", true);
+
+</script>
+
+</body>
+</html>
+
+<div v-html = "item.data.code"></div>
